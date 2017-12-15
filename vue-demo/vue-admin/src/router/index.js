@@ -1,22 +1,12 @@
 import Vue from 'vue'
-import Router from 'vue-router'
+import VueRouter from 'vue-router'
+import {routers} from './router'
 
-Vue.use(Router)
+// 路由配置
+Vue.use(VueRouter)
 
-export default new Router({
-  routes: [
-    {
-      path: '/',
-      name: 'Root',
-      component: resolve => { require(['@/views/Root.vue'], resolve) },
-      // redirect: { path: '/order' },
-      children: [
-        {
-          path: '/order',
-          name: 'order',
-          component: resolve => { require(['@/views/order/order.vue']) }
-        }
-      ]
-    }
-  ]
-})
+const RouterConfig = {
+  routes: routers
+}
+
+export const router = new VueRouter(RouterConfig)
