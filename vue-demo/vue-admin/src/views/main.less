@@ -1,0 +1,38 @@
+html, body {
+  width: 100vw;
+  height: 100vh;
+  background: #f0f0f0;
+  overflow: hidden;
+}
+.main {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  .sidebar-menu-wrap {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    height: 100vh;
+    transition: width .3s;
+    .logo-wrap {
+      padding: 8px;
+      font-size: 22px;
+      font-weight: bold;
+      line-height: 2;
+      color: #FFF;
+      text-align: center;
+    }
+  }
+  &-header-wrap {
+    position: fixed;
+    z-index: 0;
+    display: block;
+    width: 100%;
+    height: auto;
+    padding-left: 200px;
+    box-sizing: border-box;
+    box-shadow: 0 2px 1px 1px rgba(100,100,100,.1);
+    transition: padding .3s;
+  }
+}

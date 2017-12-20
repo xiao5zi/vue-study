@@ -51,10 +51,10 @@
       submitForm () {
         this.$refs.loginForm.validate(valid => {
           if (valid) {
-            if (this.loginForm.username === 'admin') {
-
+            if (this.loginForm.username === 'admin' && this.loginForm.password === '123') {
+              this.$router.push({ name: 'main_home' })
             } else {
-
+              this.$Notice.error({ title: '用户名或密码错误' })
             }
           }
         })
