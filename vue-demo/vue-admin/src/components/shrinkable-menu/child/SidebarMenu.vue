@@ -8,13 +8,13 @@
 
       <Submenu v-if="item.children.length > 1" :name="item.name" :key="item.path">
         <template slot="title">
-          <Icon :type="item.icon" :size="iconSize">{{ item.name }}</Icon>
+          <Icon :type="item.icon" :size="iconSize"></Icon>
           <span class="layout-text">{{ menuTitle(item) }}</span>
         </template>
         <template v-for="(child, index) in item.children">
           <MenuItem :name="child.name" :key="child.name">
-            <Icon :type="child.icon" :size="iconSize">{{ child.title }}</Icon>
-            <span class="layout-text">{{ menuTitle(item) }}</span>
+            <Icon :type="child.icon" :size="iconSize"></Icon>
+            <span class="layout-text">{{ child.title }}</span>
           </MenuItem>
         </template>
       </Submenu>

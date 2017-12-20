@@ -25,7 +25,7 @@ export const mainRouter = {
   name: 'mainRouter',
   component: Main,
   children: [
-    { path: 'home', title: { i18n: 'home' }, name: 'main_home', component: resolve => { require(['@/views/home/home.vue'], resolve) } }
+    { path: 'home', title: '首页', name: 'main_home', component: resolve => { require(['@/views/home/home.vue'], resolve) } }
   ]
 }
 
@@ -34,21 +34,21 @@ export const appRouter = [
   {
     path: '/system',
     name: 'system',
-    title: 'System',
+    title: '系统管理',
     icon: 'gear-a',
     component: Main,
     children: [
       {
         path: 'user',
         name: 'user',
-        title: 'User',
+        title: '用户管理',
         icon: 'person',
         component: resolve => { require(['@/views/system/user/user.vue'], resolve) }
       },
       {
         path: 'permission',
         name: 'permission',
-        title: 'Permission',
+        title: '权限管理',
         icon: 'settings',
         component: resolve => { require(['@/views/system/permission/permission.vue'], resolve) }
       }
