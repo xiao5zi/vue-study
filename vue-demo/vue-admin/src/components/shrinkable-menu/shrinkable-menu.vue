@@ -10,13 +10,13 @@
       :menu-theme="theme"
       :menu-list="menuList"
       :open-names="openNames"
-      @on-change="menuSwitch"
+      @on-change="handleChange"
     ></sidebar-menu>
     <sidebar-menu-shrink
       v-show="shrink"
       :menu-theme="theme"
       :menu-list="menuList"
-      @on-change="menuSwitch"
+      @on-change="handleChange"
     ></sidebar-menu-shrink>
   </div>
 </template>
@@ -54,7 +54,17 @@
       }
     },
     methods: {
-      menuSwitch () {
+      handleChange (name) {
+        let pushFlag = true
+        if (this.beforePush !== undefined) {
+          if (!this.beforePush(name)) {
+            pushFlag = false
+          }
+        }
+        if (pushFlag) {
+          this.$router.push({ name })
+        }
+        this.$emit('on-change', name)
       }
     }
   }

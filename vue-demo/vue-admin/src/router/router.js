@@ -32,26 +32,24 @@ export const mainRouter = {
 // 作为 Main 组件的子页面展示，并且在左侧菜单显示的路由
 export const appRouter = [
   {
+    path: '/article',
+    name: 'article',
+    title: '文章管理',
+    icon: 'ios-paper-outline',
+    component: Main,
+    children: [
+      { path: 'list', name: 'article_list', title: '文章管理', component: resolve => { require(['@/views/article/article-list.vue'], resolve) } }
+    ]
+  },
+  {
     path: '/system',
     name: 'system',
     title: '系统管理',
     icon: 'gear-a',
     component: Main,
     children: [
-      {
-        path: 'user',
-        name: 'user',
-        title: '用户管理',
-        icon: 'person',
-        component: resolve => { require(['@/views/system/user/user.vue'], resolve) }
-      },
-      {
-        path: 'permission',
-        name: 'permission',
-        title: '权限管理',
-        icon: 'settings',
-        component: resolve => { require(['@/views/system/permission/permission.vue'], resolve) }
-      }
+      { path: 'user', name: 'user', title: '用户管理', icon: 'person', component: resolve => { require(['@/views/system/user/user.vue'], resolve) } },
+      { path: 'permission', name: 'permission', title: '权限管理', icon: 'key', component: resolve => { require(['@/views/system/permission/permission.vue'], resolve) } }
     ]
   }
 ]

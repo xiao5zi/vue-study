@@ -36,8 +36,41 @@ html, body {
     transition: padding .3s;
   }
   &-header {
+    position: relative;
     height: 60px;
     background: #fff;
     box-shadow: 0 2px 1px 1px rgba(100,100,100,.1);
+    .header-menu-icon {
+      width: 60px;
+      padding: 6px;
+    }
+    .header-path-wrap {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 60px;
+      right: 300px;
+      padding: 10px;
+    }
+    .header-avatar-wrap {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      padding-right: 10px;
+      width: 300px;
+      .user-drop-down {
+        height: 100%;
+      }
+    }
+  }
+  &-page-wrap {
+    position: absolute;
+    top: 80px;
+    left: 200px;
+    right: 0;
+    bottom: 0;
+    background: #F0F0F0;
+    transition: left .3s;
   }
 }

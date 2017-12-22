@@ -13,16 +13,30 @@
     <!-- main header -->
     <div class="main-header-wrap">
       <div class="main-header">
-        <div class="nav-icon">
+        <div class="header-menu-icon">
           <Button type="text"><Icon type="navicon" size="32"></Icon></Button>
         </div>
-        <div class="header-dropdown-menu">
+        <div class="header-path-wrap"></div>
+        <div class="header-avatar-wrap">
+          <Row class="user-drop-down" type="flex" justify="end" align="middle">
+            <Dropdown trigger="click">
+              <a href="javascript: void(0)">
+                <span style="font-size: 14px">{{ 'admin' }}</span>
+                <Icon type="arrow-down-b"></Icon>
+              </a>
+              <DropdownMenu slot="list">
+                <DropdownItem>个人中心</DropdownItem>
+                <DropdownItem divided>退出登录</DropdownItem>
+              </DropdownMenu>
+            </Dropdown>
+            <Avatar icon="person" style="margin-left: 10px"></Avatar>
+          </Row>
         </div>
       </div>
     </div>
     <!-- main area -->
-    <div class="single-page-wrap">
-      <div class="single-page">
+    <div class="main-page-wrap">
+      <div class="main-page">
         <router-view></router-view>
       </div>
     </div>
@@ -41,7 +55,6 @@
     },
     computed: {
       menuList () {
-        console.log('menuList: ', this.$store.state.app.menuList)
         return this.$store.state.app.menuList
       }
     },
