@@ -3,9 +3,10 @@
 </style>
 
 <template>
-    <div class="home">
-      home
-    </div>
+  <Card>
+    <p slot="title">home</p>
+    <p>content</p>
+  </Card>
 </template>
 <script>
   export default {

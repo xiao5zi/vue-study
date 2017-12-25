@@ -26,7 +26,7 @@ html, body {
   }
   &-header-wrap {
     position: fixed;
-    z-index: 0;
+    z-index: 1;
     display: block;
     width: 100%;
     height: auto;
@@ -51,13 +51,19 @@ html, body {
       left: 60px;
       right: 300px;
       padding: 10px;
+      .ivu-breadcrumb {
+        margin-top: 7px;
+        .ivu-breadcrumb-item-link {
+          font-size: 16px;
+        }
+      }
     }
     .header-avatar-wrap {
       position: absolute;
       top: 0;
       right: 0;
       bottom: 0;
-      padding-right: 10px;
+      padding-right: 15px;
       width: 300px;
       .user-drop-down {
         height: 100%;
@@ -66,11 +72,16 @@ html, body {
   }
   &-page-wrap {
     position: absolute;
-    top: 80px;
+    top: 70px;
     left: 200px;
     right: 0;
     bottom: 0;
+    z-index: 0;
     background: #F0F0F0;
     transition: left .3s;
+  }
+  &-page {
+    height: 100%;
+    margin: 10px;
   }
 }

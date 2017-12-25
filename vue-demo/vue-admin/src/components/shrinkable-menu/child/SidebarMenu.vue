@@ -39,9 +39,8 @@
         this.$emit('on-change', active)
       },
       menuTitle (item) {
-        console.log('menuTitle: ', typeof item.title === 'object', item.title)
         if (typeof item.title === 'object') {
-          console.log('item.title = ', item.title)
+//          console.log('item.title = ', item.title)
           return this.$t(item.title.i18n)
         } else {
           return item.title

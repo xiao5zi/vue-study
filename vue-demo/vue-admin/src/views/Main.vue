@@ -16,7 +16,9 @@
         <div class="header-menu-icon">
           <Button type="text"><Icon type="navicon" size="32"></Icon></Button>
         </div>
-        <div class="header-path-wrap"></div>
+        <div class="header-path-wrap">
+          <BreadcrumbNav :currentPath="currPath"></BreadcrumbNav>
+        </div>
         <div class="header-avatar-wrap">
           <Row class="user-drop-down" type="flex" justify="end" align="middle">
             <Dropdown trigger="click">
@@ -44,9 +46,11 @@
 </template>
 <script>
   import ShrinkableMenu from '../components/shrinkable-menu/shrinkable-menu.vue'
+  import BreadcrumbNav from '../components/breadcrumb-nav.vue'
   export default {
     components: {
-      ShrinkableMenu
+      ShrinkableMenu,
+      BreadcrumbNav
     },
     data () {
       return {
@@ -56,6 +60,9 @@
     computed: {
       menuList () {
         return this.$store.state.app.menuList
+      },
+      currPath () {
+        return this.$store.state.app.currentPath
       }
     },
     methods: {
