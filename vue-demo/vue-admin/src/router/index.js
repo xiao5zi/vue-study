@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import {routers} from './router'
+import { routers } from './router'
 
 // 路由配置
 Vue.use(VueRouter)

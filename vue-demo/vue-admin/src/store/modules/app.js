@@ -6,8 +6,8 @@ const app = {
     currentPath: [
       {
         title: '首页',
-        path: '/home',
-        name: 'home'
+        path: '/',
+        name: 'main_home'
       }
     ],
     routers: [

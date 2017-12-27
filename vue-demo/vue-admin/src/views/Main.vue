@@ -7,9 +7,10 @@
     <!-- left sidebar menu -->
     <div class="sidebar-menu-wrap" :style="{ width: shrink ? '60px' : '200px', overflow: shrink ? 'visible' : 'auto' }">
       <shrinkable-menu :shrink="shrink" :menu-list="menuList">
-        <div slot="top" class="logo-wrap">Admin System</div>
+        <div slot="top" class="logo-wrap">后台管理系统</div>
       </shrinkable-menu>
     </div>
+
     <!-- main header -->
     <div class="main-header-wrap">
       <div class="main-header">
@@ -36,12 +37,18 @@
         </div>
       </div>
     </div>
+
     <!-- main area -->
     <div class="main-page-wrap">
       <div class="main-page">
         <router-view></router-view>
       </div>
     </div>
+
+    <!-- main footer -->
+    <footer class="main-footer">
+      <p>&copy; {{ (new Date()).getFullYear() }} by Sean. All Rights Reserved.</p>
+    </footer>
   </div>
 </template>
 <script>

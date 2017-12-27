@@ -24,6 +24,7 @@ export const mainRouter = {
   path: '/',
   name: 'mainRouter',
   component: Main,
+  redirect: '/home',
   children: [
     { path: 'home', title: '首页', name: 'main_home', component: resolve => { require(['@/views/home/home.vue'], resolve) } }
   ]
