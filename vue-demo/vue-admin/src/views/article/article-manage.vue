@@ -1,5 +1,6 @@
 <template>
-    <div class="article-list">
+    <div class="article-manage">
+      <!-- query -->
       <Card :bordered="false" dis-hover>
         <p slot="title">文章查询</p>
         <Row :gutter="10" type="flex" align="middle">
@@ -14,17 +15,37 @@
           </Col>
           <Col span="2" style="text-align: right">发布时间：</Col>
           <Col span="4"><DatePicker type="datetime" format="yyyy-MM-dd HH:mm" placeholder="请选择日期"></DatePicker></Col>
+          <Col span="4"><DatePicker type="datetime" format="yyyy-MM-dd HH:mm" placeholder="请选择日期"></DatePicker></Col>
           <Col span="2" style="text-align: right"><Button type="primary" style="margin-right: 30px">查询</Button></Col>
         </Row>
       </Card>
+
+      <!-- list -->
       <Card :bordered="false" dis-hover>
         <p slot="title">文章列表</p>
-        <Table :columns="columnTitle" :data="articleList" border stripe></Table>
+        <Table
+          border
+          stripe
+          ref="articleList"
+          :data="articleList"
+          :columns="columnTitle"
+          @on-selection-change="onSelectChange"
+        ></Table>
         <Row class="table-footer">
-          <Col span="8"><Button type="error">删除</Button><Button type="primary">新增</Button></Col>
+          <Col span="8"><Button type="error" @click="remove">删除</Button><Button type="primary" @click="editItem">新增</Button></Col>
           <Col span="16"><Page :total="100" show-total></Page></Col>
         </Row>
       </Card>
+
+      <!-- edit -->
+      <Modal :title="editTitle" v-model="editable" :mask-closable="false" :closable="false" :width="800">
+        <Form :model="articleForm" :label-width="80">
+          <Row><FormItem label="文章标题："><Input placeholder="请输入文章标题"/></FormItem></Row>
+          <Row><FormItem label="来源："><Input placeholder="请输入来源"/></FormItem></Row>
+          <Row><FormItem label="发布人："><Input placeholder="请输入发布人"/></FormItem></Row>
+          <Row><FormItem label="文章内容："><Input type="textarea" :rows="5" placeholder="请输入文章内容"/></FormItem></Row>
+        </Form>
+      </Modal>
     </div>
 </template>
 
@@ -53,7 +74,8 @@
           {
             title: '文章内容',
             key: 'content',
-            align: 'center'
+            align: 'center',
+            ellipsis: true
           },
           {
             title: '来源',
@@ -82,6 +104,7 @@
                   style: { marginRight: '5px' },
                   on: {
                     click: () => {
+                      this.editItem(params)
                     }
                   }
                 }, '编辑'),
@@ -108,76 +131,77 @@
         ],
         articleList: [
           {
-            title: '这是一篇文章标题',
+            title: '这是文章标题1',
             source: '新华网',
             publisher: '张三三',
             publishTime: '2017-12-27 09:33:34',
             content: '这是什么鬼，如果文章内容超出了怎么办？这是什么鬼，如果文章内容超出了怎么办？'
           },
           {
-            title: '这是一篇文章标题',
+            title: '这是文章标题2',
             source: '新华网',
             publisher: '张三三',
             publishTime: '2017-12-27 09:33:34'
           },
           {
-            title: '这是一篇文章标题',
+            title: '这是文章标题3',
             source: '新华网',
             publisher: '张三三',
             publishTime: '2017-12-27 09:33:34'
           },
           {
-            title: '这是一篇文章标题',
+            title: '这是文章标题4',
             source: '新华网',
             publisher: '张三三',
             publishTime: '2017-12-27 09:33:34'
           },
 //          {
-//            title: '这是一篇文章标题',
+//            title: '这是文章标题5',
 //            source: '新华网',
 //            publisher: '张三三',
 //            publishTime: '2017-12-27 09:33:34'
 //          },
 //          {
-//            title: '这是一篇文章标题',
+//            title: '这是文章标题6',
 //            source: '新华网',
 //            publisher: '张三三',
 //            publishTime: '2017-12-27 09:33:34'
 //          },
 //          {
-//            title: '这是一篇文章标题',
+//            title: '这是文章标题7',
 //            source: '新华网',
 //            publisher: '张三三',
 //            publishTime: '2017-12-27 09:33:34'
 //          },
 //          {
-//            title: '这是一篇文章标题',
+//            title: '这是文章标题8',
 //            source: '新华网',
 //            publisher: '张三三',
 //            publishTime: '2017-12-27 09:33:34'
 //          },
           {
-            title: '这是一篇文章标题',
+            title: '这是文章标题9',
             source: '新华网',
             publisher: '张三三',
             publishTime: '2017-12-27 09:33:34'
           },
           {
-            title: '这是一篇文章标题',
+            title: '这是文章标题10',
             source: '新华网',
             publisher: '张三三',
             publishTime: '2017-12-27 09:33:34'
           }
-        ]
+        ],
+        editable: false,
+        editTitle: '',
+        articleForm: {}
       }
-    },
-    created () {
     },
     methods: {
       show (index) {
         this.$Modal.info({
           title: '文章信息',
-          content: `标题：${this.articleList[index].title}<br>来源：${this.articleList[index].source}<br>发布人：${this.articleList[index].publisher}<br>发布时间：${this.articleList[index].publishTime}<br>`
+          content: `标题：${this.articleList[index].title}<br>来源：${this.articleList[index].source}<br>发布人：${this.articleList[index].publisher}<br>发布时间：${this.articleList[index].publishTime}<br>文章内容：${this.articleList[index].content || ''}`
         })
       },
       remove (index) {
@@ -188,13 +212,25 @@
             this.articleList.splice(index, 1)
           }
         })
+      },
+      editItem (item) {
+        this.editable = true
+        console.log('item: ', item)
+        if (item) {
+          this.editTitle = '编辑文章'
+        } else {
+          this.editTitle = '新增文章'
+        }
+      },
+      onSelectChange (items) {
+        console.log('onSelectChange: ', items)
       }
     }
   }
 </script>
 
 <style lang="less">
-  .article-list {
+  .article-manage {
     .ivu-card-head {
       /*background: #F0F0F0;*/
     }

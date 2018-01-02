@@ -34,12 +34,11 @@ export const mainRouter = {
 export const appRouter = [
   {
     path: '/article',
-    name: 'article',
     title: '文章管理',
     icon: 'ios-paper-outline',
     component: Main,
     children: [
-      { path: 'list', name: 'article_list', title: '文章管理', component: resolve => { require(['@/views/article/article-list.vue'], resolve) } }
+      { path: '', name: 'article_list', title: '文章管理', component: resolve => { require(['@/views/article/article-manage.vue'], resolve) } }
     ]
   },
   {
