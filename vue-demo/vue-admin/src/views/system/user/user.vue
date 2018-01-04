@@ -1,6 +1,3 @@
-<style lang="less">
-</style>
-
 <template>
     <div class="user">
       <!-- query -->
@@ -52,8 +49,33 @@
             width: 65
           },
           {
-            title: '名称',
+            title: '用户名',
             key: 'username',
+            align: 'center'
+          },
+          {
+            title: '头像',
+            key: 'avatar',
+            align: 'center',
+            render: (h, params) => {
+              return h('img', {
+                attrs: {
+                  src: params.row.avatar
+                },
+                style: {
+                  width: '50px'
+                }
+              }, [])
+            }
+          },
+          {
+            title: '昵称',
+            key: 'nickname',
+            align: 'center'
+          },
+          {
+            title: '手机号',
+            key: 'mobile',
             align: 'center'
           },
           {
@@ -62,19 +84,70 @@
             align: 'center'
           },
           {
-            title: '生日',
-            key: 'birth',
+            title: '出生日期',
+            key: 'birthdate',
             align: 'center'
+          },
+          {
+            title: '登录时间',
+            key: 'loginTime',
+            align: 'center'
+          },
+          {
+            title: '登录地址',
+            key: 'loginLocation',
+            align: 'center'
+          },
+          {
+            title: '操作',
+            key: 'action',
+            align: 'center',
+            width: 140,
+            render: (h, params) => {
+              return h('div', [
+                h('Button', {
+                  props: { size: 'small', type: 'primary' },
+                  style: { marginRight: '5px' },
+                  on: {
+                    click: () => {
+                      this.editItem(params)
+                    }
+                  }
+                }, '编辑'),
+                h('Button', {
+                  props: { size: 'small' },
+                  style: { marginRight: '5px' },
+                  on: {
+                    click: () => {
+                      this.show(params.index)
+                    }
+                  }
+                }, '查看')
+              ])
+            }
           }
         ],
         userList: [
-          {}
+          {
+            username: 'LHC',
+            avatar: require('../../../images/lhc.jpg'),
+            nickname: '令狐冲',
+            mobile: '19812345678',
+            sex: '男',
+            birthdate: '1042年1月24日',
+            loginTime: '2018-1-4 10:46:54',
+            loginLocation: '深圳南山区'
+          }
         ]
       }
     },
-    created () {
-    },
     methods: {
+      show (index) {
+        this.$Modal.info({
+          title: '用户信息',
+          content: `用户名：${this.userList[index].username}<br>昵称：${this.userList[index].nickname}<br>性别：${this.userList[index].sex}<br>出生日期：${this.userList[index].birthdate}<br>手机号：${this.userList[index].mobile || ''}`
+        })
+      },
       remove (index) {
         this.$Modal.confirm({
           title: '提示框',

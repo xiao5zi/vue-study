@@ -2,7 +2,11 @@
 </style>
 
 <template>
-    <div class="permission">permission</div>
+    <div class="permission">
+      <Card :bordered="false" dis-hover>
+        <p slot="title">权限管理</p>
+      </Card>
+    </div>
 </template>
 <script>
   export default {

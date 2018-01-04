@@ -40,9 +40,9 @@
       <!-- edit -->
       <Modal :title="editTitle" v-model="editable" :mask-closable="false" :closable="false" :width="800">
         <Form :model="articleForm" :label-width="80">
-          <Row><FormItem label="文章标题："><Input placeholder="请输入文章标题"/></FormItem></Row>
-          <Row><FormItem label="来源："><Input placeholder="请输入来源"/></FormItem></Row>
-          <Row><FormItem label="发布人："><Input placeholder="请输入发布人"/></FormItem></Row>
+          <Row><FormItem label="文章标题："><Col span="16"><Input placeholder="请输入文章标题"/></Col></FormItem></Row>
+          <Row><FormItem label="来源："><Col span="8"><Input placeholder="请输入来源"/></Col></FormItem></Row>
+          <Row><FormItem label="发布人："><Col span="8"><Input placeholder="请输入发布人"/></Col></FormItem></Row>
           <Row><FormItem label="文章内容："><Input type="textarea" :rows="5" placeholder="请输入文章内容"/></FormItem></Row>
         </Form>
       </Modal>
