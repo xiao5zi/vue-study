@@ -3,18 +3,18 @@
     <template v-for="item in menuList">
       <MenuItem v-if="item.children.length <= 1" :name="item.children[0].name" :key="item.name">
         <Icon :type="item.icon" :size="iconSize"></Icon>
-        <span>{{ menuTitle(item) }}</span>
+        <span class="menu-text">{{ menuTitle(item) }}</span>
       </MenuItem>
 
       <Submenu v-if="item.children.length > 1" :name="item.name" :key="item.name">
         <template slot="title">
           <Icon :type="item.icon" :size="iconSize"></Icon>
-          <span>{{ menuTitle(item) }}</span>
+          <span class="menu-text">{{ menuTitle(item) }}</span>
         </template>
         <template v-for="(child, index) in item.children">
           <MenuItem :name="child.name" :key="child.name">
             <Icon :type="child.icon" :size="iconSize"></Icon>
-            <span>{{ child.title }}</span>
+            <span class="menu-text">{{ child.title }}</span>
           </MenuItem>
         </template>
       </Submenu>
