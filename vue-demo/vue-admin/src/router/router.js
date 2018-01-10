@@ -44,7 +44,7 @@ export const appRouter = [
   {
     path: '/system',
     name: 'system',
-    title: '系统管理',
+    title: '系统',
     icon: 'gear-a',
     component: Main,
     children: [

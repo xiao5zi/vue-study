@@ -8,8 +8,8 @@
     <div class="sidebar-menu-wrap" :style="{ width: shrink ? '60px' : '200px'}">
       <shrinkable-menu :shrink="shrink" :menu-list="menuList">
         <div slot="top" class="logo-wrap">
-          <span v-show="!shrink">后台管理系统</span>
-          <span v-show="shrink">系统</span>
+          <span v-show="!shrink">Admin System</span>
+          <span v-show="shrink">AS</span>
         </div>
       </shrinkable-menu>
     </div>
