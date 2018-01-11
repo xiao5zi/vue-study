@@ -12,17 +12,21 @@
         let chartLine = eCharts.init(document.getElementById('chartLine'))
         chartLine.setOption({
           title: {
-            text: '商品日销量'
+            text: '网站周访问量',
+            subtext: '数据纯属虚构'
           },
           tooltip: {},
           xAxis: {
-            data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
+            interval: 6,
+            data: ['星期一', '星期二', '星期三', '星期四', '星期五', '星期六', '星期日']
           },
-          yAxis: {},
+          yAxis: {
+            scale: true
+          },
           series: [{
-            name: '销量',
+            name: '网站访问量',
             type: 'line',
-            data: [5, 20, 36, 10, 10, 20]
+            data: [205387, 193889, 412368, 300408, 243923, 169283, 283782]
           }]
         })
       })

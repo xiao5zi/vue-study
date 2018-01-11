@@ -16,14 +16,17 @@
             text: '商品日销量'
           },
           tooltip: {},
-//          legend: {
-//            orient: 'horizontal',
-//            bottom: 0,
-//            data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
-//          },
+          legend: {
+            orient: 'vertical',
+            right: 0,
+            bottom: '5%',
+            data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
+          },
           series: [{
             name: '销量',
             type: 'pie',
+            startAngle: 90,
+            radius: [0, '50%'],
             data: [
               { value: 5, name: '衬衫' },
               { value: 20, name: '羊毛衫' },
