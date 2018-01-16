@@ -1,20 +1,23 @@
 <template>
   <div class="root">
-    <div class="menu-wrap">
-      <div class="logo" slot="title">
-        <Icon type="arrow-graph-up-right" :size="48"></Icon>
-        <!--<p>大数据</p>-->
-      </div>
-      <Menu mode="vertical" theme="dark" width="auto" @on-select="handleSelect">
-        <MenuItem v-for="(item, index) in menuList" :name="item.name" :key="index">
-          <Icon :type="item.icon" :size="24" style="margin-right: 0;"></Icon><p class="menu-text">{{ item.title }}</p>
-        </MenuItem>
-      </Menu>
-    </div>
+    <Layout class="root-layout">
+      <Sider class="menu-wrap" width="100px" collapsible hide-trigger>
+        <!--<div class="logo" slot="title" >-->
+          <!--<Icon type="arrow-graph-up-right" :size="48"></Icon>-->
+          <!--<p>大数据</p>-->
+        <!--</div>-->
+        <Menu mode="vertical" theme="dark" width="auto" @on-select="handleSelect">
+          <MenuItem v-for="(item, index) in menuList" :name="item.name" :key="index">
+            <Icon :type="item.icon" :size="24" style="margin-right: 0;"></Icon><p class="menu-text">{{ item.title }}</p>
+          </MenuItem>
+        </Menu>
+      </Sider>
 
-    <div class="main-wrap">
       <router-view></router-view>
-    </div>
+      <!--<Layout>-->
+        <!--<Content></Content>-->
+      <!--</Layout>-->
+    </Layout>
   </div>
 </template>
 <script>
@@ -62,23 +65,15 @@
   }
 </script>
 <style lang="less">
-  html, body {
-    width: 100vw;
-    height: 100vh;
-  }
   .root {
     position: relative;
-    min-height: 100vh;
-    background: #F0F4F5;
+    height: 100%;
+    &-layout {
+      height: 100%;
+      /*background: #F0F4F5;*/
+    }
     .menu-wrap {
-      position: absolute;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      z-index: 1;
-      width: 100px;
       text-align: center;
-      background: #495060;
       .logo {
         padding: 15px 12px;
         color: rgba(255, 255, 255, .7);
@@ -88,21 +83,6 @@
       }
       .ivu-menu-item {
         padding: 15px;
-      }
-    }
-    .main-wrap {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      z-index: 0;
-      padding-left: 100px;
-      .top-panel {
-
-      }
-      .main-panel {
-        padding: 30px;
       }
     }
   }

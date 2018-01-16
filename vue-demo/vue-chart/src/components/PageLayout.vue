@@ -1,16 +1,16 @@
 <template>
-    <div class="page-layout">
-      <div class="page-layout-top">
-        <Row class="content" type="flex" align="middle">
-          <Col span="12"><slot name="topTitle"></slot></Col>
-          <Col span="12" class="text-align"><slot name="topRight"></slot></Col>
+    <Layout class="page-layout">
+      <Header class="page-layout-header">
+        <Row class="header-row" type="flex" align="middle">
+          <Col span="12"><slot name="headTitle"></slot></Col>
+          <Col span="12" class="col-right"><slot name="headRight"></slot></Col>
         </Row>
-      </div>
+      </Header>
 
-      <div class="page-layout-main">
-        <slot name="mainArea"></slot>
-      </div>
-    </div>
+      <Content class="page-layout-content">
+        <slot name="mainContent"></slot>
+      </Content>
+    </Layout>
 </template>
 <script>
   export default {
@@ -23,20 +23,37 @@
 </script>
 <style lang="less">
   .page-layout {
-    &-top {
-      width: 100%;
+    &-header {
       height: 148px;
+      padding: 0;
+      line-height: 1.5;
       background: #FFF;
-      .content {
+      box-shadow: 0 1px 6px rgba(0,0,0,.2);
+      .header-row {
         padding: 30px;
         height: 100%;
+        .col-right {
+          text-align: right;
+        }
       }
-      .text-align {
-        text-align: right;
+      .header-title {
+        font-size: 26px;
+        &-en {
+          font-size: 12px;
+        }
+      }
+      .header-right {
+        .ivu-btn {
+          width: 80px;
+          margin-left: 10px;
+        }
       }
     }
-    &-main {
+    &-content {
       padding: 30px;
+      .ivu-row {
+        margin-bottom: 30px;
+      }
     }
   }
 </style>
