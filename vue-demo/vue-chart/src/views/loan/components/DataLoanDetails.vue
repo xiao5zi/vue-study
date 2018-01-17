@@ -1,5 +1,5 @@
 <template>
-    <div id="dcLoanDetail" style="width: 100%; height: 450px;"></div>
+    <div id="dLoanDetails" style="width: 100%; height: 450px;"></div>
 </template>
 <script>
   import echarts from 'echarts'
@@ -9,11 +9,15 @@
     },
     mounted () {
       this.$nextTick(() => {
-        let dcLoanDetail = echarts.init(document.getElementById('dcLoanDetail'))
+        let dcLoanDetail = echarts.init(document.getElementById('dLoanDetails'))
         let option = {
           title: {
             text: '年度放款详情',
-            subtext: '总放款量：￥856 103 031 900.00'
+            subtext: '总放款量：￥856 103 031 900.00',
+            textStyle: {
+              fontSize: 16,
+              fontWeight: 'normal'
+            }
           },
           color: ['#B6DFF3', '#F2F2F2', '#88A4A7'],
           tooltip: {},
@@ -83,5 +87,3 @@
     }
   }
 </script>
-<style lang="less">
-</style>

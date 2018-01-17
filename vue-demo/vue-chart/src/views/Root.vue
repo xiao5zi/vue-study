@@ -27,27 +27,27 @@
       return {
         menuList: [
           {
-            name: 'home_index',
+            name: 'home',
             icon: 'home',
             title: '首页'
           },
           {
-            name: 'loan_detail',
+            name: 'loan',
             icon: 'cash',
             title: '放贷详情'
           },
           {
-            name: '2',
+            name: 'lines',
             icon: 'speedometer',
             title: '额度使用'
           },
           {
-            name: '3',
+            name: 'funnel',
             icon: 'funnel',
-            title: '全程漏斗串'
+            title: '全程漏斗率'
           },
           {
-            name: '4',
+            name: 'overdue',
             icon: 'ios-timer',
             title: '逾期金额'
           }

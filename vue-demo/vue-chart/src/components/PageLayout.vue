@@ -51,8 +51,10 @@
     }
     &-content {
       padding: 30px;
-      .ivu-row {
-        margin-bottom: 30px;
+      .main-content {
+        >.ivu-row {
+          margin-bottom: 30px;
+        }
       }
     }
   }
