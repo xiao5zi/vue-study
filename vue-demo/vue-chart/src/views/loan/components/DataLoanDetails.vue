@@ -78,6 +78,7 @@
               name: '放款笔数',
               type: 'line',
               yAxisIndex: 0,
+              smooth: true,
               data: [25, 38, 28, 37, 48, 62, 50]
             }
           ]
